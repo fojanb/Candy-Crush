@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
       boxes[parseInt(boxIdTarget)].style.backgroundColor = colorDragged;
       boxes[parseInt(boxIdDragged)].style.backgroundColor = colorTarget;
     } else {
-      //Do not swap colors (aka candies ! )
+      // Do not swap colors (aka candies ! )
       boxes[parseInt(boxIdDragged)].style.backgroundColor = colorDragged;
       boxes[parseInt(boxIdTarget)].style.backgroundColor = colorTarget;
     }
@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
         score += 3;
         rowOfThree.forEach(
           item => boxes[parseInt(item)].style.backgroundColor = ""
-        );
+        )
       } //End of if
     } //End of for
   }
