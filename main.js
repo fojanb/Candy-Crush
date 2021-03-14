@@ -63,35 +63,36 @@ document.addEventListener("DOMContentLoaded", () => {
     // console.log(this.id, "dragleave");
   }
   function dragDrop() {
-    console.log(this.id, "dragdrop");
+    console.log(this.id, this.style.backgroundColor, "dragdrop");
     colorTarget = this.style.backgroundColor;
     boxIdTarget = this.id;
     // console.log(colorTarget);
     // console.log(boxIdTarget);
+    // console.log(colorDragged);
     // Swap colors (aka candies ! )
-    this.style.backgroundColor = colorDragged;
-    boxes[boxIdDragged].style.backgroundColor = colorTarget;
-    // boxes[boxIdTarget].style.backgroundColor = colorDragged;
+    // this.style.backgroundColor = colorDragged;
+    // boxes[boxIdDragged].style.backgroundColor = colorTarget;
   }
 
   function dragEnd() {
     console.log(this.id, "dragend");
     colorDragged = this.style.backgroundColor;
     boxIdDragged = this.id;
-    // What is a valid move? (+ cross movement)
-    // let validMoves = [
-    //   boxIdDragged - 1,
-    //   boxIdDragged - width,
-    //   boxIdDragged + 1,
-    //   boxIdDragged + width,
-    // ];
-    // let validMove = validMoves.includes(boxIdTarget);
-    // if (validMove && boxIdTarget) {
-    //   boxes[boxIdTarget].style.backgroundColor = colorDragged;
-    //   boxes[boxIdDragged].style.backgroundColor = colorTarget;
-    // } else {
-    //   boxes[boxIdDragged].style.backgroundColor = colorDragged;
-    //   boxes[boxIdTarget].style.backgroundColor = colorTarget;
-    // }
+    // // What is a valid move? (+ cross movement)
+    let validMoves = [
+      parseInt(boxIdDragged) - 1,
+      parseInt(boxIdDragged) - 8,
+      parseInt(boxIdDragged) + 1,
+      parseInt(boxIdDragged) + 8,
+    ];
+    let validMove = validMoves.includes(parseInt(boxIdTarget));
+    console.log(validMove);
+    if (validMove) {
+      boxes[parseInt(boxIdTarget)].style.backgroundColor = colorDragged;
+      boxes[parseInt(boxIdDragged)].style.backgroundColor = colorTarget;
+    } else {
+      boxes[parseInt(boxIdDragged)].style.backgroundColor = colorDragged;
+      boxes[parseInt(boxIdTarget)].style.backgroundColor = colorTarget;
+    }
   }
 });
