@@ -69,9 +69,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // console.log(colorTarget);
     // console.log(boxIdTarget);
     // console.log(colorDragged);
-    // Swap colors (aka candies ! )
-    // this.style.backgroundColor = colorDragged;
-    // boxes[boxIdDragged].style.backgroundColor = colorTarget;
+   
+    
   }
 
   function dragEnd() {
@@ -88,9 +87,11 @@ document.addEventListener("DOMContentLoaded", () => {
     let validMove = validMoves.includes(parseInt(boxIdTarget));
     console.log(validMove);
     if (validMove) {
+       // Swap colors (aka candies ! )
       boxes[parseInt(boxIdTarget)].style.backgroundColor = colorDragged;
       boxes[parseInt(boxIdDragged)].style.backgroundColor = colorTarget;
     } else {
+       //Do not swap colors (aka candies ! )
       boxes[parseInt(boxIdDragged)].style.backgroundColor = colorDragged;
       boxes[parseInt(boxIdTarget)].style.backgroundColor = colorTarget;
     }
