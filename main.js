@@ -27,14 +27,15 @@ document.addEventListener("DOMContentLoaded", () => {
       box.classList.add("box");
       board.appendChild(box);
       boxes.push(box);
+      // so far : <div id="2" class="box" style="background-color:"" ,draggable="true">
     }
   }
   createBoard();
   //---------------------Drag Candies------------------*
-  let colorBeingDragged;
-  let boxIdBeingDragged;
-  let colorBeingReplaced;
-  let boxIdBeingReplaced;
+  let colorDragged;
+  let boxIdDragged;
+  let colorTarget;
+  let boxIdTarget;
 
   boxes.forEach((box) => box.addEventListener("dragstart", dragStart));
   boxes.forEach((box) => box.addEventListener("dragover", dragOver));
@@ -44,10 +45,10 @@ document.addEventListener("DOMContentLoaded", () => {
   boxes.forEach((box) => box.addEventListener("dragend", dragEnd));
 
   function dragStart() {
-    colorBeingDragged = this.style.backgroundColor;
-    boxIdBeingDragged = this.id;
-    // console.log(colorBeingDragged);
-    // console.log(boxIdBeingDragged);
+    colorDragged = this.style.backgroundColor;
+    boxIdDragged = this.id;
+    // console.log(colorDragged);
+    // console.log(boxIdDragged);
     console.log(this.id, "dragstart");
   }
   function dragOver(event) {
@@ -63,34 +64,34 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   function dragDrop() {
     console.log(this.id, "dragdrop");
-    colorBeingReplaced = this.style.backgroundColor;
-    boxIdBeingReplaced = this.id;
-    // console.log(colorBeingReplaced);
-    // console.log(boxIdBeingReplaced);
+    colorTarget = this.style.backgroundColor;
+    boxIdTarget = this.id;
+    // console.log(colorTarget);
+    // console.log(boxIdTarget);
     // Swap colors (aka candies ! )
-    this.style.backgroundColor = colorBeingDragged;
-    boxes[boxIdBeingDragged].style.backgroundColor = colorBeingReplaced;
-    // boxes[boxIdBeingReplaced].style.backgroundColor = colorBeingDragged;
+    this.style.backgroundColor = colorDragged;
+    boxes[boxIdDragged].style.backgroundColor = colorTarget;
+    // boxes[boxIdTarget].style.backgroundColor = colorDragged;
   }
 
   function dragEnd() {
     console.log(this.id, "dragend");
-    boxIdBeingDragged = this.id;
+    colorDragged = this.style.backgroundColor;
+    boxIdDragged = this.id;
     // What is a valid move? (+ cross movement)
-    let validMoves = [
-      boxIdBeingDragged - 1,
-      boxIdBeingDragged - width,
-      boxIdBeingDragged + 1,
-      boxIdBeingDragged + width,
-    ];
-    let validMove = validMoves.includes(boxIdBeingReplaced);
-    if (validMove && boxIdBeingReplaced) {
-      boxIdBeingReplaced = null;
-    } else if (!validMove && boxIdBeingReplaced) {
-      boxes[boxIdBeingReplaced].style.backgroundColor = colorBeingReplaced;
-      boxes[boxIdBeingDragged].style.backgroundColor = colorBeingDragged;
-    } else {
-      boxes[boxIdBeingDragged].style.backgroundColor = colorBeingDragged;
-    }
+    // let validMoves = [
+    //   boxIdDragged - 1,
+    //   boxIdDragged - width,
+    //   boxIdDragged + 1,
+    //   boxIdDragged + width,
+    // ];
+    // let validMove = validMoves.includes(boxIdTarget);
+    // if (validMove && boxIdTarget) {
+    //   boxes[boxIdTarget].style.backgroundColor = colorDragged;
+    //   boxes[boxIdDragged].style.backgroundColor = colorTarget;
+    // } else {
+    //   boxes[boxIdDragged].style.backgroundColor = colorDragged;
+    //   boxes[boxIdTarget].style.backgroundColor = colorTarget;
+    // }
   }
 });
