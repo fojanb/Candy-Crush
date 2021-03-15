@@ -99,20 +99,23 @@ document.addEventListener("DOMContentLoaded", () => {
   // Cheking for matches : rows of 3 or 4 or 5 candies / colums of 3 or 4 or 5 candies
   // Check for row of 3 candies :
   function checkRowForThree() {
-    for (let i = 0; i < 61; i++) {
+    for (let i = 0; i < boxes.length-3; i++) {
       let rowOfThree = [i, i + 1,i + 2];
-      let decidedColor = boxes[parseInt(i)].style.backgroundColor;
-      let isBlank = boxes[parseInt(i)].style.backgroundColor === "";
+      let decidedColor = boxes[i].style.backgroundColor;
+      const isBlank = boxes[i].style.backgroundColor === "";
       
-      if (rowOfThree.every(item => {boxes[parseInt(item)].style.backgroundColor === (decidedColor && !isBlank)})) 
+      if (rowOfThree.every(item => boxes[item].style.backgroundColor === decidedColor && !isBlank)) 
       {
         score += 3;
         rowOfThree.forEach(
-          item => boxes[parseInt(item)].style.backgroundColor = ""
+          item => {boxes[item].style.backgroundColor = ""}
         )
       } //End of if
     } //End of for
   }
-  checkRowForThree();
+   window.setInterval(function(){
+    checkRowForThree();
+
+   },100);  //Invoke every 100 mili sec
  
 });
