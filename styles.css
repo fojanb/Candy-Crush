@@ -1,12 +1,26 @@
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #053c74;
+  color: azure;
+  font-family: 'Fredoka One', cursive;
+  letter-spacing: 5px;
+}
 .board {
   display: grid;
-  grid-template-columns: repeat(8,70px);
-  grid-template-rows: repeat(8,70px);
-
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+  grid-template-columns: repeat(8, 70px);
+  grid-template-rows: repeat(8, 70px);
 }
-.box{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 20px;
 }
