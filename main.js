@@ -95,15 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
   //---------------------Drag Candies end------------------*
-  // Drop down candies once some have been cleared
-  function moveDown() {
-    for (let i = 0; i < 55; i++) {
-      if (boxes[i + width].style.backgroundColor === "") {
-        boxes[i + width].style.backgroundColor = boxes[i].style.backgroundColor;
-        boxes[i].style.backgroundColor = "";
-      }
-    }
-  }
+  
   //--------------------Cheking for matches-----------------*
   // <<rows of 3 or 4 or 5 candies / colums of 3 or 4 or 5 candies>>
 
@@ -233,7 +225,15 @@ document.addEventListener("DOMContentLoaded", () => {
     } //End of for
   }
   checkColumnForFour();
-
+  // Drop down candies once some have been cleared
+  function moveDown() {
+    for (let i = 0; i < 55; i++) {
+      if (boxes[i + width].style.backgroundColor === "") {
+        boxes[i + width].style.backgroundColor = boxes[i].style.backgroundColor;
+        boxes[i].style.backgroundColor = "";
+      }
+    }
+  }
   window.setInterval(function () {
     moveDown();
     checkRowForFour();
