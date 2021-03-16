@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
   //---------------------Drag Candies end------------------*
-  
+
   //--------------------Cheking for matches-----------------*
   // <<rows of 3 or 4 or 5 candies / colums of 3 or 4 or 5 candies>>
 
@@ -225,22 +225,30 @@ document.addEventListener("DOMContentLoaded", () => {
     } //End of for
   }
   checkColumnForFour();
-  // Drop down candies once some have been cleared
+  // ----------------Drop Down Candies-------------
   function moveDown() {
+    // Drop down candies once some have been cleared
     for (let i = 0; i < 55; i++) {
       if (boxes[i + width].style.backgroundColor === "") {
         boxes[i + width].style.backgroundColor = boxes[i].style.backgroundColor;
         boxes[i].style.backgroundColor = "";
+        // Now let's fill out empty box (aka candy) with random color:
+        const firstRow = [0, 1, 2, 3, 4, 5, 6, 7];
+        const isInFirstRow = firstRow.includes(i); //Returns boolean
+        if (isInFirstRow && boxes[i].style.backgroundColor === "") {
+          let randomColor = Math.floor(Math.random() * candyColors.length);
+          boxes[i].style.backgroundColor = candyColors[randomColor];
+        }
       }
     }
   }
+  // ---------------------------------------------
+
   window.setInterval(function () {
     moveDown();
     checkRowForFour();
     checkColumnForFour();
     checkRowForThree();
     checkColumnForThree();
-  }, 100); //Invoke every 100 milli seconds
-
-  
+  }, 100); //Invoke every 100 milli-seconds
 });
