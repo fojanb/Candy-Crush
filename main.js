@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   // upper line means that we want our html file to be loaded before our script.
   const board = document.querySelector(".board"); //Grab <div class="board"></>div from HTML code.
+  const displayScore = document.getElementById('score');
   // Global Variables.
   width = 8;
   const boxes = [];
@@ -129,6 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
         )
       ) {
         score += 3;
+        displayScore.innerHTML = score;
         rowOfThree.forEach((item) => {
           boxes[item].style.backgroundColor = "";
         });
@@ -151,6 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
         )
       ) {
         score += 3;
+        displayScore.innerHTML = score;
         columnOfThree.forEach((item) => {
           boxes[item].style.backgroundColor = "";
         });
@@ -196,6 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
         )
       ) {
         score += 4;
+        displayScore.innerHTML = score;
         rowOfFour.forEach((item) => {
           boxes[item].style.backgroundColor = "";
         });
@@ -218,6 +222,7 @@ document.addEventListener("DOMContentLoaded", () => {
         )
       ) {
         score += 4;
+        displayScore.innerHTML = score;
         columnOfFour.forEach((item) => {
           boxes[item].style.backgroundColor = "";
         });
