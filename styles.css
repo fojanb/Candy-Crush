@@ -5,7 +5,7 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: #7ea0ca;
+  background-color: #8d68ca;
   color: azure;
   font-family: 'Fredoka One', cursive;
   letter-spacing: 5px;
@@ -23,4 +23,8 @@ body {
   align-items: center;
   cursor: pointer;
   border-radius: 20px;
+}
+#score{
+  -webkit-text-stroke: 1px #ebff39;
+  color: #8d68ca ;
 }
