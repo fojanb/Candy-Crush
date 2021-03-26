@@ -5,7 +5,7 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: #8d68ca;
+  background-color: rgb(126, 160, 202);
   color: azure;
   font-family: 'Fredoka One', cursive;
   letter-spacing: 5px;
@@ -26,5 +26,5 @@ body {
 }
 #score{
   -webkit-text-stroke: 1px #ebff39;
-  color: #8d68ca ;
+  color: rgb(126, 160, 202) ;
 }
